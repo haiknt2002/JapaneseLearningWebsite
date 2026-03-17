@@ -222,8 +222,8 @@ function applyFilters() {
 }
 
 function drawRandomFlashcard() {
-	const source = state.filteredKana.length > 0 ? state.filteredKana : state.allKana;
-	if (source.length === 0) {
+	const source = state.filteredKana;
+	if (!source || source.length === 0) {
 		state.currentFlashcard = null;
 		elements.flashKana.textContent = "...";
 		elements.flashRomaji.textContent = t("flashNoData");
