@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiragana Study Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=M+PLUS+Rounded+1c:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg-orb orb-left"></div>
+    <div class="bg-orb orb-right"></div>
+
+    <main class="container">
+        <section class="lang-switch" aria-label="Language switcher">
+            <button id="langViBtn" class="lang-btn is-active" type="button" data-lang="vi" aria-pressed="true">Tiếng Việt</button>
+            <button id="langJaBtn" class="lang-btn" type="button" data-lang="ja" aria-pressed="false">日本語</button>
+        </section>
+
+        <header class="hero">
+            <p class="kicker" data-i18n="kicker">Website học tiếng Nhật</p>
+            <h1 id="heroTitle" data-i18n="heroTitle">Học Hiragana dễ nhìn và dễ nhớ hơn</h1>
+            <p class="subtitle" data-i18n="heroSubtitle">
+                Dữ liệu được đọc trực tiếp từ thư mục Data, không cần database.
+                Lọc theo hàng, tìm theo romaji và luyện nhanh mỗi ngày.
+            </p>
+            <div class="stats" aria-live="polite">
+                <div class="stat-card">
+                    <span class="stat-label" data-i18n="totalChars">Tổng ký tự</span>
+                    <strong id="totalCount">0</strong>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label" data-i18n="showingChars">Đang hiển thị</span>
+                    <strong id="visibleCount">0</strong>
+                </div>
+            </div>
+        </header>
+
+        <section id="controlsPanel" class="panel controls-panel" aria-label="Bộ lọc và tìm kiếm">
+            <div class="input-group">
+                <label for="searchInput" data-i18n="searchLabel">Tìm kana hoặc romaji</label>
+                <input id="searchInput" type="text" placeholder="Ví dụ: ka, shi, し..." autocomplete="off">
+            </div>
+            <div class="input-group">
+                <label for="rowFilter" data-i18n="rowFilterLabel">Lọc theo hàng</label>
+                <select id="rowFilter">
+                    <option id="rowFilterAllOption" value="all">Tất cả</option>
+                </select>
+            </div>
+            <button id="resetBtn" class="btn btn-ghost" type="button" data-i18n="resetBtn">Xóa bộ lọc</button>
+        </section>
+
+        <section id="tablePanel" class="panel" aria-label="Bảng hiragana">
+            <div id="kanaGrid" class="kana-grid"></div>
+            <p id="emptyState" class="empty-state" hidden>Không tìm thấy ký tự phù hợp.</p>
+        </section>
+
+        <section id="practicePanel" class="panel practice-panel" aria-label="Luyện tập flashcard">
+            <div class="practice-header">
+                <h2 data-i18n="practiceTitle">Luyện nhanh</h2>
+                <button id="nextCardBtn" class="btn" type="button" data-i18n="nextCardBtn">Ký tự khác</button>
+            </div>
+            <div class="flashcard-wrap">
+                <button id="flashcard" class="flashcard" type="button" aria-live="polite" aria-label="Flashcard hiragana">
+                    <span id="flashKana" class="flash-kana">...</span>
+                    <span id="flashRomaji" class="flash-romaji">Bấm để hiện romaji</span>
+                </button>
+            </div>
+            <p class="practice-tip" data-i18n="practiceTip">Mẹo: Thử đọc to ký tự trước khi bấm vào thẻ để kiểm tra.</p>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
