@@ -281,10 +281,10 @@ async function bootstrap() {
 
 		elements.totalCount.textContent = String(state.allKana.length);
 		renderRowOptions();
-		updateStaticTexts();
 		renderKanaGrid(state.filteredKana);
-		bindEvents();
 		drawRandomFlashcard();
+		updateStaticTexts();
+		bindEvents();
 	} catch (error) {
 		elements.kanaGrid.innerHTML = "";
 		elements.emptyState.hidden = false;
