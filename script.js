@@ -269,7 +269,10 @@ async function bootstrap() {
 	try {
 		const response = await fetch("Data/hiragana.json");
 		if (!response.ok) {
-			throw new Error("Không tải được dữ liệu");
+			const statusInfo = [response.status, response.statusText].filter(Boolean).join(" ");
+			const messageBase = t("loadError");
+			const fullMessage = statusInfo ? `${messageBase} (${statusInfo})` : messageBase;
+			throw new Error(fullMessage);
 		}
 
 		const data = await response.json();
