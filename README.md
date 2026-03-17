@@ -17,11 +17,11 @@ Trang web học tiếng Nhật nhẹ, dùng HTML, CSS và JavaScript.
 
 - File hiện tại: Data/hiragana.json
 - Định dạng mỗi ký tự:
-	- id
-	- kana
-	- romaji
-	- row
-	- column
+  - id
+  - kana
+  - romaji
+  - row
+  - column
 
 Bạn có thể thêm bộ chữ mới (Katakana, từ vựng...) bằng cách tạo file JSON mới trong thư mục Data và cập nhật script.js để tải file đó.
 
@@ -38,10 +38,10 @@ Bạn có thể thêm bộ chữ mới (Katakana, từ vựng...) bằng cách t
 
 - Current file: Data/hiragana.json
 - Character object fields:
-	- id
-	- kana
-	- romaji
-	- row
-	- column
+  - id
+  - kana
+  - romaji
+  - row
+  - column
 
 You can add new datasets (Katakana, vocabulary, etc.) by creating new JSON files in the Data folder and updating script.js to fetch those files.
