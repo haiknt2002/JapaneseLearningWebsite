@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "title": "Basic Hiragana",
+  "characters": [
+    { "id": "a", "kana": "あ", "romaji": "a", "row": "a", "column": "a" },
+    { "id": "i", "kana": "い", "romaji": "i", "row": "a", "column": "i" },
+    { "id": "u", "kana": "う", "romaji": "u", "row": "a", "column": "u" },
+    { "id": "e", "kana": "え", "romaji": "e", "row": "a", "column": "e" },
+    { "id": "o", "kana": "お", "romaji": "o", "row": "a", "column": "o" },
+
+    { "id": "ka", "kana": "か", "romaji": "ka", "row": "ka", "column": "a" },
+    { "id": "ki", "kana": "き", "romaji": "ki", "row": "ka", "column": "i" },
+    { "id": "ku", "kana": "く", "romaji": "ku", "row": "ka", "column": "u" },
+    { "id": "ke", "kana": "け", "romaji": "ke", "row": "ka", "column": "e" },
+    { "id": "ko", "kana": "こ", "romaji": "ko", "row": "ka", "column": "o" },
+
+    { "id": "sa", "kana": "さ", "romaji": "sa", "row": "sa", "column": "a" },
+    { "id": "shi", "kana": "し", "romaji": "shi", "row": "sa", "column": "i" },
+    { "id": "su", "kana": "す", "romaji": "su", "row": "sa", "column": "u" },
+    { "id": "se", "kana": "せ", "romaji": "se", "row": "sa", "column": "e" },
+    { "id": "so", "kana": "そ", "romaji": "so", "row": "sa", "column": "o" },
+
+    { "id": "ta", "kana": "た", "romaji": "ta", "row": "ta", "column": "a" },
+    { "id": "chi", "kana": "ち", "romaji": "chi", "row": "ta", "column": "i" },
+    { "id": "tsu", "kana": "つ", "romaji": "tsu", "row": "ta", "column": "u" },
+    { "id": "te", "kana": "て", "romaji": "te", "row": "ta", "column": "e" },
+    { "id": "to", "kana": "と", "romaji": "to", "row": "ta", "column": "o" },
+
+    { "id": "na", "kana": "な", "romaji": "na", "row": "na", "column": "a" },
+    { "id": "ni", "kana": "に", "romaji": "ni", "row": "na", "column": "i" },
+    { "id": "nu", "kana": "ぬ", "romaji": "nu", "row": "na", "column": "u" },
+    { "id": "ne", "kana": "ね", "romaji": "ne", "row": "na", "column": "e" },
+    { "id": "no", "kana": "の", "romaji": "no", "row": "na", "column": "o" },
+
+    { "id": "ha", "kana": "は", "romaji": "ha", "row": "ha", "column": "a" },
+    { "id": "hi", "kana": "ひ", "romaji": "hi", "row": "ha", "column": "i" },
+    { "id": "fu", "kana": "ふ", "romaji": "fu", "row": "ha", "column": "u" },
+    { "id": "he", "kana": "へ", "romaji": "he", "row": "ha", "column": "e" },
+    { "id": "ho", "kana": "ほ", "romaji": "ho", "row": "ha", "column": "o" },
+
+    { "id": "ma", "kana": "ま", "romaji": "ma", "row": "ma", "column": "a" },
+    { "id": "mi", "kana": "み", "romaji": "mi", "row": "ma", "column": "i" },
+    { "id": "mu", "kana": "む", "romaji": "mu", "row": "ma", "column": "u" },
+    { "id": "me", "kana": "め", "romaji": "me", "row": "ma", "column": "e" },
+    { "id": "mo", "kana": "も", "romaji": "mo", "row": "ma", "column": "o" },
+
+    { "id": "ya", "kana": "や", "romaji": "ya", "row": "ya", "column": "a" },
+    { "id": "yu", "kana": "ゆ", "romaji": "yu", "row": "ya", "column": "u" },
+    { "id": "yo", "kana": "よ", "romaji": "yo", "row": "ya", "column": "o" },
+
+    { "id": "ra", "kana": "ら", "romaji": "ra", "row": "ra", "column": "a" },
+    { "id": "ri", "kana": "り", "romaji": "ri", "row": "ra", "column": "i" },
+    { "id": "ru", "kana": "る", "romaji": "ru", "row": "ra", "column": "u" },
+    { "id": "re", "kana": "れ", "romaji": "re", "row": "ra", "column": "e" },
+    { "id": "ro", "kana": "ろ", "romaji": "ro", "row": "ra", "column": "o" },
+
+    { "id": "wa", "kana": "わ", "romaji": "wa", "row": "wa", "column": "a" },
+    { "id": "wo", "kana": "を", "romaji": "o", "row": "wa", "column": "o" },
+
+    { "id": "n", "kana": "ん", "romaji": "n", "row": "n", "column": "n" }
+  ]
+}
