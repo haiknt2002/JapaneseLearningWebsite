@@ -13,7 +13,6 @@ const elements = {
 	tablePanel: document.getElementById("tablePanel"),
 	practicePanel: document.getElementById("practicePanel"),
 	rowFilter: document.getElementById("rowFilter"),
-	rowFilterAllOption: document.getElementById("rowFilterAllOption"),
 	searchInput: document.getElementById("searchInput"),
 	resetBtn: document.getElementById("resetBtn"),
 	kanaGrid: document.getElementById("kanaGrid"),
