@@ -55,7 +55,7 @@
     { "id": "ro", "kana": "ろ", "romaji": "ro", "row": "ra", "column": "o" },
 
     { "id": "wa", "kana": "わ", "romaji": "wa", "row": "wa", "column": "a" },
-    { "id": "wo", "kana": "を", "romaji": "o", "row": "wa", "column": "o" },
+    { "id": "wo", "kana": "を", "romaji": "wo", "row": "wa", "column": "o" },
 
     { "id": "n", "kana": "ん", "romaji": "n", "row": "n", "column": "n" }
   ]
