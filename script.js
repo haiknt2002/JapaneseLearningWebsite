@@ -138,10 +138,16 @@ function renderKanaGrid(list) {
 	list.forEach((item) => {
 		const card = document.createElement("article");
 		card.className = "kana-card";
-		card.innerHTML = `
-			<span class="kana">${item.kana}</span>
-			<span class="romaji">${item.romaji}</span>
-		`;
+
+		const kanaSpan = document.createElement("span");
+		kanaSpan.className = "kana";
+		kanaSpan.textContent = item.kana;
+
+		const romajiSpan = document.createElement("span");
+		romajiSpan.className = "romaji";
+		romajiSpan.textContent = item.romaji;
+
+		card.append(kanaSpan, romajiSpan);
 		elements.kanaGrid.append(card);
 	});
 }
