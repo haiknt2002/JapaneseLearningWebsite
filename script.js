@@ -258,19 +258,40 @@ function toggleFlashcardAnswer() {
 		: t("flashPrompt");
 }
 
-function openStrokeModal(item) {
+async function openStrokeModal(item) {
 	if (!item) return;
 	elements.modalKana.textContent = item.kana;
 	elements.modalRomaji.textContent = item.romaji;
 	
-	// Thay thế kaki-jun để bắt buộc vẽ lại từ đầu
-	const newKakiJun = document.createElement("kaki-jun");
-	newKakiJun.id = "modalKakiJun";
-	newKakiJun.textContent = item.kana;
-	elements.modalKakiJun.replaceWith(newKakiJun);
-	elements.modalKakiJun = newKakiJun;
-	
+	elements.modalKakiJun.innerHTML = "<span class='meta'>Đang tải...</span>";
 	elements.kanaModal.showModal();
+
+	try {
+		const hex = item.kana.charCodeAt(0).toString(16).padStart(5, '0');
+		const url = `https://raw.githubusercontent.com/KanjiVG/kanjivg/master/kanji/${hex}.svg`;
+		const res = await fetch(url);
+		if (!res.ok) throw new Error("SVG not found");
+		
+		const svgText = await res.text();
+		elements.modalKakiJun.innerHTML = svgText;
+		
+		const svg = elements.modalKakiJun.querySelector('svg');
+		if (svg) {
+			svg.setAttribute('width', '100%');
+			svg.setAttribute('height', '100%');
+			
+			const paths = svg.querySelectorAll('path');
+			paths.forEach((path, i) => {
+				const length = path.getTotalLength() || 200;
+				path.style.strokeDasharray = length;
+				path.style.strokeDashoffset = length;
+				path.style.animation = `drawStroke 0.5s ease-out forwards ${i * 0.5 + 0.2}s`;
+			});
+		}
+	} catch (e) {
+		elements.modalKakiJun.innerHTML = `<span class='meta'>Lỗi tải ảnh</span>`;
+		console.error("Lỗi tải nét viết: ", e);
+	}
 }
 
 function bindEvents() {

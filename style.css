@@ -398,8 +398,15 @@ select:focus,
 	border: 2px dashed #e5e7eb;
 }
 
-.kaki-wrap kaki-jun {
-	font-size: 120px;
+.kaki-wrap svg {
+	width: 120px;
+	height: 120px;
+}
+
+@keyframes drawStroke {
+	to {
+		stroke-dashoffset: 0;
+	}
 }
 
 .modal-details {
@@ -473,7 +480,8 @@ select:focus,
 		gap: 10px;
 	}
 	
-	.kaki-wrap kaki-jun {
-		font-size: 90px;
+	.kaki-wrap svg {
+		width: 90px;
+		height: 90px;
 	}
 }
