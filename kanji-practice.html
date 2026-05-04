@@ -5,64 +5,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kanji Practice</title>
     <style>
-        body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; font-family: Arial, sans-serif; }
-        #container { display: flex; width: 80%; }
-        #kanji-info { flex: 1; padding: 20px; }
-        #canvas-area { flex: 2; display: flex; flex-direction: column; align-items: center; }
-        #canvas { border: 1px solid #000; width: 100%; height: 300px; background-color: #f0f0f0; }
-        #controls { margin-top: 10px; }
-        #instructions { flex: 1; padding: 20px; }
-        #kanji-selector { margin: 20px 0; }
+        body {
+            display: flex;
+            margin: 0;
+        }
+        header {
+            background: linear-gradient(to right, orange, yellow);
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+        }
+        .container {
+            display: flex;
+            flex: 1;
+        }
+        .panel {
+            padding: 10px;
+            overflow: auto;
+        }
+        .kanji-selector {
+            background: #f4f4f4;
+            width: 200px;
+        }
+        .canvas {
+            border: 1px solid black;
+            position: relative;
+            width: 300px;
+            height: 400px;
+            background: white;
+        }
+        .grid {
+            background-image: linear-gradient(to right, lightgray 1px, transparent 1px), 
+                              linear-gradient(to bottom, lightgray 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .examples {
+            background: #f4f4f4;
+            width: 200px;
+        }
+        @media (max-width: 800px) {
+            .container {
+                flex-direction: column;
+            }
+            .canvas {
+                width: 100%;
+                height: 300px;
+            }
+        }
     </style>
 </head>
 <body>
-    <div id="container">
-        <div id="kanji-info">
-            <h2>Kanji Information</h2>
-            <div id="kanji-character" style="font-size: 48px;">一</div>
-            <div id="kanji-details">Meaning: One</div>
-            <div id="kanji-selector">
-                <label for="kanji">Select Kanji:</label>
-                <select id="kanji">
-                    <option value="一">一 (One)</option>
-                    <option value="二">二 (Two)</option>
-                    <option value="三">三 (Three)</option>
-                    <option value="四">四 (Four)</option>
-                    <option value="五">五 (Five)</option>
-                </select>
+    <header>
+        Kanji Practice Writing Interface
+    </header>
+    <div class="container">
+        <div class="panel kanji-selector">
+            <h3>Kanji Selector</h3>
+            <p>Select a kanji:</p>
+            <select id="kanjiSelect">
+                <option value="日">日</option>
+                <option value="月">月</option>
+                <option value="火">火</option>
+                <option value="水">水</option>
+                <option value="木">木</option>
+                <option value="金">金</option>
+                <option value="土">土</option>
+                <option value="曜">曜</option>
+            </select>
+            <div id="kanjiInfo">
+                <p>Info about the selected kanji will appear here.</p>
             </div>
         </div>
-        <div id="canvas-area">
-            <canvas id="canvas"></canvas>
-            <div id="controls">
-                <button onclick="clearCanvas()">Clear Canvas</button>
-                <button onclick="nextKanji()">Next Kanji</button>
-            </div>
+        <div class="panel canvas grid">
+            <h3>Canvas Drawing Area</h3>
+            <canvas id="drawingCanvas"></canvas>
+            <script>
+                const canvas = document.getElementById('drawingCanvas');
+                const ctx = canvas.getContext('2d');
+                canvas.width = 300;
+                canvas.height = 400;
+                
+                // Center guide lines
+                ctx.strokeStyle = "rgba(0, 0, 0, 0.5)";
+                ctx.beginPath();
+                ctx.moveTo(150, 0);
+                ctx.lineTo(150, 400);
+                ctx.moveTo(0, 200);
+                ctx.lineTo(300, 200);
+                ctx.stroke();
+            </script>
         </div>
-        <div id="instructions">
-            <h2>Stroke Instructions</h2>
-            <ol id="stroke-orders">
-                <li>Start from the top.</li>
-                <li>Draw from left to right.</li>
-                <li>Complete horizontal strokes before vertical strokes.</li>
-            </ol>
+        <div class="panel examples">
+            <h3>Examples</h3>
+            <p>Example kanji writing:</p>
+            <img src="example-kanji.png" alt="Example Kanji" style="width: 100%;">
+            <p>More examples will be added here.</p>
         </div>
     </div>
-    <script>
-        function clearCanvas() {
-            const canvas = document.getElementById('canvas');
-            const context = canvas.getContext('2d');
-            context.clearRect(0, 0, canvas.width, canvas.height);
-        }
-
-        function nextKanji() {
-            // Logic to switch to the next kanji character
-        }
-
-        document.getElementById('kanji').addEventListener('change', function() {
-            document.getElementById('kanji-character').innerText = this.value;
-            // Update other kanji info accordingly
-        });
-    </script>
 </body>
 </html>
