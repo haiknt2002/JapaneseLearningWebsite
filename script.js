@@ -280,13 +280,37 @@ async function openStrokeModal(item) {
 			svg.setAttribute('width', '100%');
 			svg.setAttribute('height', '100%');
 			
-			const paths = svg.querySelectorAll('path');
-			paths.forEach((path, i) => {
-				const length = path.getTotalLength() || 200;
-				path.style.strokeDasharray = length;
-				path.style.strokeDashoffset = length;
-				path.style.animation = `drawStroke 0.5s ease-out forwards ${i * 0.5 + 0.2}s`;
-			});
+			// Làm nổi bật các con số thứ tự nét
+			const numbersGroup = svg.querySelector('g[id^="kvg:StrokeNumbers"]');
+			if (numbersGroup) {
+				numbersGroup.style.fill = '#1f2937';
+				numbersGroup.style.fontSize = '12px';
+				numbersGroup.style.fontWeight = 'bold';
+			}
+
+			// Đổi màu nền xám mờ cho chữ cái
+			const pathsGroup = svg.querySelector('g[id^="kvg:StrokePaths"]');
+			if (pathsGroup) {
+				pathsGroup.style.stroke = '#e5e7eb';
+
+				// Clone nét để chạy animation đè lên nét mờ
+				const animatedGroup = pathsGroup.cloneNode(true);
+				animatedGroup.style.stroke = 'var(--accent-strong)';
+				svg.appendChild(animatedGroup);
+
+				const paths = animatedGroup.querySelectorAll('path');
+				paths.forEach((path, i) => {
+					const length = path.getTotalLength() || 200;
+					path.style.strokeDasharray = length;
+					path.style.strokeDashoffset = length;
+					path.style.animation = `drawStroke 0.6s ease-out forwards ${i * 0.8 + 0.2}s`;
+				});
+
+				// Đưa các con số lên lớp trên cùng để không bị nét che khuất
+				if (numbersGroup) {
+					svg.appendChild(numbersGroup);
+				}
+			}
 		}
 	} catch (e) {
 		elements.modalKakiJun.innerHTML = `<span class='meta'>Lỗi tải ảnh</span>`;
