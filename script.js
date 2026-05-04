@@ -23,6 +23,12 @@ const elements = {
 	flashcard: document.getElementById("flashcard"),
 	flashKana: document.getElementById("flashKana"),
 	flashRomaji: document.getElementById("flashRomaji"),
+	kanaModal: document.getElementById("kanaModal"),
+	closeModalBtn: document.getElementById("closeModalBtn"),
+	modalKakiJun: document.getElementById("modalKakiJun"),
+	modalKana: document.getElementById("modalKana"),
+	modalRomaji: document.getElementById("modalRomaji"),
+	flashStrokeBtn: document.getElementById("flashStrokeBtn"),
 };
 
 const rowOrder = ["a", "ka", "sa", "ta", "na", "ha", "ma", "ya", "ra", "wa", "n"];
@@ -64,6 +70,8 @@ const i18n = {
 		tableAria: "Bảng hiragana",
 		practiceAria: "Luyện tập flashcard",
 		flashAria: "Flashcard hiragana",
+		strokeOrderTitle: "Cách viết",
+		strokeOrderBtn: "Xem cách viết",
 	},
 	ja: {
 		pageTitle: "ひらがな学習ハブ",
@@ -89,6 +97,8 @@ const i18n = {
 		tableAria: "ひらがな一覧",
 		practiceAria: "フラッシュカード練習",
 		flashAria: "ひらがなフラッシュカード",
+		strokeOrderTitle: "書き方",
+		strokeOrderBtn: "書き方を見る",
 	},
 };
 
@@ -147,6 +157,7 @@ function renderKanaGrid(list) {
 		romajiSpan.textContent = item.romaji;
 
 		card.append(kanaSpan, romajiSpan);
+		card.addEventListener("click", () => openStrokeModal(item));
 		elements.kanaGrid.append(card);
 	});
 }
@@ -247,6 +258,21 @@ function toggleFlashcardAnswer() {
 		: t("flashPrompt");
 }
 
+function openStrokeModal(item) {
+	if (!item) return;
+	elements.modalKana.textContent = item.kana;
+	elements.modalRomaji.textContent = item.romaji;
+	
+	// Thay thế kaki-jun để bắt buộc vẽ lại từ đầu
+	const newKakiJun = document.createElement("kaki-jun");
+	newKakiJun.id = "modalKakiJun";
+	newKakiJun.textContent = item.kana;
+	elements.modalKakiJun.replaceWith(newKakiJun);
+	elements.modalKakiJun = newKakiJun;
+	
+	elements.kanaModal.showModal();
+}
+
 function bindEvents() {
 	elements.langViBtn.addEventListener("click", () => setLanguage("vi"));
 	elements.langJaBtn.addEventListener("click", () => setLanguage("ja"));
@@ -262,6 +288,14 @@ function bindEvents() {
 
 	elements.nextCardBtn.addEventListener("click", drawRandomFlashcard);
 	elements.flashcard.addEventListener("click", toggleFlashcardAnswer);
+
+	elements.closeModalBtn.addEventListener("click", () => elements.kanaModal.close());
+	elements.kanaModal.addEventListener("click", (e) => {
+		if (e.target === elements.kanaModal) {
+			elements.kanaModal.close();
+		}
+	});
+	elements.flashStrokeBtn.addEventListener("click", () => openStrokeModal(state.currentFlashcard));
 }
 
 async function bootstrap() {
