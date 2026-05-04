@@ -1,0 +1,1 @@
+[Your Kanji Data with Stroke Information Here]
