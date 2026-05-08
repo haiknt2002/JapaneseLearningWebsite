@@ -29,6 +29,7 @@ const elements = {
 	modalKana: document.getElementById("modalKana"),
 	modalRomaji: document.getElementById("modalRomaji"),
 	flashStrokeBtn: document.getElementById("flashStrokeBtn"),
+	replayStrokeBtn: document.getElementById("replayStrokeBtn"),
 };
 
 const rowOrder = ["a", "ka", "sa", "ta", "na", "ha", "ma", "ya", "ra", "wa", "n"];
@@ -72,6 +73,7 @@ const i18n = {
 		flashAria: "Flashcard hiragana",
 		strokeOrderTitle: "Cách viết",
 		strokeOrderBtn: "Xem cách viết",
+		replayStrokeBtn: "Phát lại",
 	},
 	ja: {
 		pageTitle: "ひらがな学習ハブ",
@@ -99,6 +101,7 @@ const i18n = {
 		flashAria: "ひらがなフラッシュカード",
 		strokeOrderTitle: "書き方",
 		strokeOrderBtn: "書き方を見る",
+		replayStrokeBtn: "もう一度再生",
 	},
 };
 
@@ -296,6 +299,7 @@ async function openStrokeModal(item) {
 				// Clone nét để chạy animation đè lên nét mờ
 				const animatedGroup = pathsGroup.cloneNode(true);
 				animatedGroup.style.stroke = 'var(--accent-strong)';
+				animatedGroup.classList.add("animated-paths");
 				svg.appendChild(animatedGroup);
 
 				const paths = animatedGroup.querySelectorAll('path');
@@ -316,6 +320,20 @@ async function openStrokeModal(item) {
 		elements.modalKakiJun.innerHTML = `<span class='meta'>Lỗi tải ảnh</span>`;
 		console.error("Lỗi tải nét viết: ", e);
 	}
+}
+
+function replayAnimation() {
+	const paths = elements.modalKakiJun.querySelectorAll('.animated-paths path');
+	paths.forEach(path => {
+		path.style.animation = 'none';
+	});
+	
+	// Trigger reflow
+	void elements.modalKakiJun.offsetWidth;
+	
+	paths.forEach((path, i) => {
+		path.style.animation = `drawStroke 0.6s ease-out forwards ${i * 0.8 + 0.2}s`;
+	});
 }
 
 function bindEvents() {
@@ -341,6 +359,7 @@ function bindEvents() {
 		}
 	});
 	elements.flashStrokeBtn.addEventListener("click", () => openStrokeModal(state.currentFlashcard));
+	elements.replayStrokeBtn.addEventListener("click", replayAnimation);
 }
 
 async function bootstrap() {
